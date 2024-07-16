@@ -1,7 +1,7 @@
 /**:
   ros__parameters:
-    device_name: /dev/ttyACM0
-    baud_rate: 115200
+    device_name: /dev/imu_usb
+    baud_rate: 230400
     flow_control: none
     parity: none
     stop_bits: "1"

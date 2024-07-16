@@ -204,6 +204,13 @@ void SerialBridgeNode::receive_callback(
 {
   UInt8MultiArray out;
   drivers::common::to_msg(buffer, out, bytes_transferred);
+
+  for(int a = 0; a < (int)bytes_transferred; a ++)
+  {
+    std::cout << (int)buffer[a];
+    std::cout << " ";
+  }
+  std::cout << std::endl;
   m_publisher->publish(out);
 }
 
