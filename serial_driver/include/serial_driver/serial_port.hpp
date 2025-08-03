@@ -202,7 +202,7 @@ public:
   /// \returns The number of bytes sent
   size_t send(const std::vector<uint8_t> & buff);
 
-  /// \brief Bocking receive operation
+  /// \brief Bocking receive operation. The function call will block until one or more bytes of data has been read successfully,
   /// \param[out] buff A buffer to be populated with the read data
   /// \returns The number of bytes read
   size_t receive(std::vector<uint8_t> & buff);
@@ -214,6 +214,11 @@ public:
   /// \brief Non-blocking receive operation
   /// \param[in] func A function to be called when data are received
   void async_receive(Functor func);
+
+  /// \brief Blocking receive operation. Read exact num_bytes and return number of bytes read. Basically it just fill the provided buffer until it is full.
+  /// \param[out] buff A buffer to be fill up completely which will fill with number of data same as buffer size.
+  /// \returns The number of bytes read.
+  size_t receive_exact(std::vector<uint8_t> & buff);
 
   /// \brief Function to send a break sequence to the serial port
   ///        Note: The port should be open first

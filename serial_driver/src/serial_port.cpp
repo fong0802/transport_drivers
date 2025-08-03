@@ -77,6 +77,12 @@ void SerialPort::async_receive(Functor func)
     });
 }
 
+// read exact num_bytes and return number of bytes read. Basically it just fill the provided buffer until it is full
+size_t SerialPort::receive_exact(std::vector<uint8_t> & buff)
+{
+  return asio::read(m_serial_port, asio::buffer(buff));
+}
+
 bool SerialPort::send_break()
 {
   bool break_sent = false;
